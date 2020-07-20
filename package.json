@@ -11,6 +11,8 @@
   "dependencies": {
     "express-handlebars": "^5.1.0",
     "express.js": "^1.0.0",
+    "mongodb": "^3.5.9",
+    "mongoose": "^5.9.25",
     "nodemon": "^2.0.4"
   }
 }

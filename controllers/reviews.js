@@ -2,6 +2,8 @@
 const Review = require('../models/review');
 const Comment = require('../models/comment');
 
+const moment = require('moment');
+
 module.exports = function(app) {
  
   
@@ -35,6 +37,11 @@ app.post('/reviews', (req, res) => {
 //show
 app.get('/reviews/:id', (req, res) => {
     Review.findById(req.params.id).lean().then((review) => {
+      let createdAt = review.createdAt;
+          createdAt = moment(createdAt).format('MMMM Do YYYY, h:mm:ss a');
+          console.log(createdAt);
+          review.createdAtFormatted = createdAt;
+          console.log(review.createdAtFormatted);
       Comment.find({ reviewId: req.params.id}).lean().then(comments => {
         res.render('reviews-show', {review: review, comments: comments})
       })

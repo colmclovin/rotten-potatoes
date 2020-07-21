@@ -1,14 +1,25 @@
 <!-- views/reviews-index.handlebars -->
 
-<h1>Reviews</h1>
+<h1>Reviews
 
-<a href="/reviews/new">New Review</a>
+</h1>
 
-<div class = "row">
+<a href="/reviews/new" type = "button" class =" btn btn-primary mb-2">New Review</a>
+
+<div class = "row" >
   {{#each reviews}}
-  <div class="col-md-3">
-  <h2><a href="/reviews/{{this._id}}">{{this.title}}</a></h2>
-  <small>{{this.movieTitle}}</small>
+  
+<div class="card text-white bg-primary ml-2 mt-2" class="align-self-center" style="max-width: 20rem; max-height: 20rem overflow: hidden; white-space: nowrap;
+    text-overflow: ellipsis;"  >
+   <div class="card-header mr-2" style = "overflow: hidden; white-space: nowrap;
+    text-overflow: ellipsis;"><a href="/reviews/{{this._id}}"> <h3 class = "card-header">{{this.title}}</a></h3></div>
+ 
+<div class="card-body mr-2"style="min-width: 20rem;"style="max-height: 5rem;" >
+    <h4 class="card-title mr-2">{{this.movieTitle}}</h4>
+    <p class="card-text mr-2" >{{this.description}}</p>
+  </div>
+
   </div>
 {{/each}}
 </div>
+

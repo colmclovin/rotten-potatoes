@@ -26,9 +26,8 @@ const reviews = require('./controllers/reviews')(app);
 //controller for routing
 
 
-
+module.exports = app;
 //open to port
 app.listen(3000, () => {
   console.log('App listening on port 3000!');
 });
-module.exports = app;

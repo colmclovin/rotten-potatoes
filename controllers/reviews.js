@@ -1,10 +1,12 @@
 
 const Review = require('../models/review');
+const Comment = require('../models/comment');
+
 module.exports = function(app) {
  
   
 
-
+  //home
     app.get('/', (req, res) => {
       Review.find().lean()
         .then(reviews => {
@@ -33,10 +35,13 @@ app.post('/reviews', (req, res) => {
 //show
 app.get('/reviews/:id', (req, res) => {
     Review.findById(req.params.id).lean().then((review) => {
-      res.render('reviews-show', { review: review })
+      Comment.find({ reviewId: req.params.id}).lean().then(comments => {
+        res.render('reviews-show', {review: review, comments: comments})
+      })
+     
     }).catch((err) => {
       console.log(err.message);
-    })
+    });
   });
 
 //edit

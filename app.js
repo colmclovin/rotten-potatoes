@@ -22,7 +22,7 @@ app.use(methodOverride('_method'));
 
 
 const reviews = require('./controllers/reviews')(app);
-
+const comments = require("./controllers/comments")(app);
 //controller for routing
 
 
